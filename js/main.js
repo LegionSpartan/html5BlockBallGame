@@ -39,7 +39,7 @@ var randomColor = getRandomColor();
 function ball(randomColor) {
     contx.beginPath();
     contx.arc(x, y, ballRadius, 0, Math.PI*2, false);
-    contx.fillStyle = randomColor;
+    contx.fillStyle = "#"+randomColor;
     contx.fill();
     contx.closePath();
 }
@@ -81,6 +81,7 @@ function collisionDetection(){
                 dy=-dy;
                 b.status = 0;
                 score++;
+                randomColor = getRandomColor();
                 if(score== brickColumnCount*brickRowCount){
                     alert("YOU WON NIGGA! go die die die NOW :)")
                     document.location.reload();
@@ -134,11 +135,9 @@ function draw() {
     
     if(y+dy < ballRadius){
         dy = -dy;
-        randomColor = getRandomColor();
     }else if(y+dy > canvas.height-ballRadius){
         if(x > paddleX && x < paddleX + paddleWidth){
             dy = -dy;
-            randomColor = getRandomColor();
         }else{
             lives--;
             if(!lives){   
